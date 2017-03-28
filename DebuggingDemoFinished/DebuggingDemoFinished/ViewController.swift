@@ -41,6 +41,12 @@ class ViewController: UIViewController {
         //assert(heroes[heroes.endIndex-1] == "Hanzo")
         //assert(heroes[heroes.startIndex] == "Winston")
         
+        print(heroes)
+        addMoreHeroes(heroes: &heroes)
+        print("after adding more heroes: \(heroes)")
+        
+        assert(heroes[heroes.endIndex-1] == "Mei")
+        
         // should fail
         //assert(heroes[heroes.endIndex] == "Tracer")
         //assert(heroes[heroes.endIndex-1] == "Hanzo")
@@ -54,13 +60,7 @@ class ViewController: UIViewController {
         print(ana.ultPercentage!) // bad
         guard let ult = ana.ultPercentage else { fatalError() } // better
         print(ult.number)
-        
-        print(heroes)
-        addMoreHeroes(heroes: &heroes)
-        print("after adding more heroes: \(heroes)")
-        
-        assert(heroes[heroes.endIndex-1] == "Mei")
-
+    
         
         // debug a point
         let point: CGPoint = CGPoint(x: 1, y: 1)
@@ -105,7 +105,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.text = "Hanzo Main"
         }
         
-//        print(self.heroes[self.heroes.endIndex])
+        // should be
+//        if indexPath.row == heroes.endIndex-1 {
+//            cell.textLabel?.text = "Hanzo Main"
+//        }
+        // remember to remove the addMoreHeroes first
+        
         // DOES NOT COUNT AS EXCEPTION
         do {
             try makeError()
